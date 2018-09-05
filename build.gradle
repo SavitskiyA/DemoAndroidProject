@@ -37,6 +37,6 @@ task clean(type: Delete) {
 
 task hello {
     doLast {
-        println 'Hello!'
+        println 'Hello world!'
     }
 }
