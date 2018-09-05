@@ -1,20 +1,17 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply plugin: 'com.mindera.gradle.slack'
 
 buildscript {
     ext.kotlin_version = '1.2.20'
     repositories {
         google()
         jcenter()
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
+        maven { url "https://jitpack.io" }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "gradle.plugin.com.alexleventer.gradle:gradle-slack-plugin:1.0.4"
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath 'com.github.Mindera:gradle-slack-plugin:1.0.7'
     }
 }
 
@@ -30,10 +27,15 @@ task clean(type: Delete) {
 }
 
 //task slack {
-//    webhookUrl "https://hooks.slack.com/services/"
+//    webhookUrl "https://hooks.slack.com/services/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"
 //    username "Gradle"
 //    shouldMonitor "compileJava", "build"
 //}
+slack {
+    url "https://hooks.slack.com/services/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"
+    dependsOnTasks 'build'
+    title 'Hi guys'
+}
 
 task hello {
     doLast {

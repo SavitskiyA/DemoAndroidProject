@@ -9,7 +9,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Hello World World!"
+        android:text="Hello World World World!"
         android:textColor="@android:color/holo_green_light" />
-
 </FrameLayout>
