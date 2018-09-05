@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<testsuite name="com.savitskiy.demoandroidproject.ExampleInstrumentedTest" tests="1" failures="0" errors="0" skipped="0" time="0.0" timestamp="2018-09-04T15:37:35" hostname="localhost">
-  <properties>
-    <property name="device" value="m3 note - 5.1" />
-    <property name="flavor" value="" />
-    <property name="project" value="app" />
-  </properties>
-  <testcase name="useAppContext" classname="com.savitskiy.demoandroidproject.ExampleInstrumentedTest" time="0.0" />
-</testsuite>

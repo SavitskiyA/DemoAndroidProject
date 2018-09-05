@@ -1,18 +1,22 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-apply plugin: 'com.mindera.gradle.slack'
+
+import groovy.json.JsonOutput
 
 buildscript {
     ext.kotlin_version = '1.2.20'
     repositories {
+        maven { url 'http://dl.bintray.com/content/noamt/gradle-plugins' }
         google()
         jcenter()
-        maven { url "https://jitpack.io" }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.github.Mindera:gradle-slack-plugin:1.0.7'
     }
+}
+
+plugins {
+    id "io.github.http-builder-ng.http-plugin" version "0.1.1"
 }
 
 allprojects {
@@ -22,23 +26,25 @@ allprojects {
     }
 }
 
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-//task slack {
-//    webhookUrl "https://hooks.slack.com/services/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"
-//    username "Gradle"
-//    shouldMonitor "compileJava", "build"
-//}
-slack {
-    url "https://hooks.slack.com/services/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"
-    dependsOnTasks 'build'
-    title 'Hi guys'
-}
-
-task hello {
+task downloadFileWithAuthn {
     doLast {
-        println 'Hello world!'
+        // POST
+        def post = new URL("https://hooks.slack.com/services/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").openConnection();
+        def message = '{"text":"This is a message fdjafdjlfsadjfksjf"}'
+        post.setRequestMethod("POST")
+        post.setDoOutput(true)
+        post.setRequestProperty("Content-Type", "application/json")
+        post.getOutputStream().write(message.getBytes("UTF-8"));
+        def postRC = post.getResponseCode();
+        println(postRC);
+        if(postRC.equals(200)) {
+            println(post.getInputStream().getText());
+        }
     }
 }
+
