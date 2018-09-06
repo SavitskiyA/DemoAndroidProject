@@ -31,7 +31,7 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-task downloadFileWithAuthn {
+task toSlack {
     doLast {
         // POST
         def post = new URL("https://hooks.slack.com/services/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").openConnection();
