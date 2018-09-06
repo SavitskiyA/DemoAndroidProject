@@ -35,7 +35,7 @@ task toSlack {
     doLast {
         // POST
         def post = new URL("https://hooks.slack.com/services/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").openConnection();
-        def message = '{"text":"This is a message fdjafdjlfsadjfksjf"}'
+        def message = '{"text":"This is a message"}'
         post.setRequestMethod("POST")
         post.setDoOutput(true)
         post.setRequestProperty("Content-Type", "application/json")
